@@ -20,6 +20,4 @@ author='Krishna',
 author_email='krishna29jul@gmail.com',
 packages=find_packages(),
 install_requires=get_requirements('requirements.txt')
-
-
 )
