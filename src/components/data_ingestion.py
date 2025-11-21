@@ -4,7 +4,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from src.logger import logging
 from src.exception import CustomException
-
+from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.data_transformation import DataTransformation
 
 class DataIngestion:
     def __init__(self):
@@ -17,7 +19,7 @@ class DataIngestion:
         try:
             # Reading dataset
             logging.info("Reading dataset from data/stud.csv")
-            #df = pd.read_csv('notebook\data\stud.csv')
+            #01df = pd.read_csv('notebook\data\stud.csv')
             df = pd.read_csv('notebook/data/stud.csv')
 
             logging.info("Dataset loaded successfully")
@@ -51,9 +53,25 @@ class DataIngestion:
             raise CustomException(e, sys)
         
 
-if __name__=="__main__":
-    abc=DataIngestion()
-    abc.initiate_data_ingestion()
+'''from src.components.data_ingestion import DataIngestion
+from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer'''
 
+if __name__ == "__main__":
+    
+    # 1️⃣ Data Ingestion
+    ingest = DataIngestion()
+    train_path, test_path = ingest.initiate_data_ingestion()
+
+    # 2️⃣ Data Transformation
+    transform = DataTransformation()
+    train_arr, test_arr, preprocessor_path = transform.initiate_data_transformation(train_path, test_path)
+
+    # 3️⃣ Model Training
+    trainer = ModelTrainer()
+    best_model_name, best_model_score= trainer.initiate_model_training(train_arr, test_arr)
+
+print(f"the best model is : {best_model_name}")
+print(f"the best model score is {best_model_score}")
 
 
