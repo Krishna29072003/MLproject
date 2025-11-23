@@ -9,7 +9,4 @@ scikit-learn
 xgboost
 catboost
 flask
-
-
-
-
+gunicorn
