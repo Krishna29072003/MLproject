@@ -30,5 +30,5 @@ def predict_data():
 
         return render_template("home.html", prediction=result[0])
 
-if __name__ == "__main__":
-    app.run(debug=True)
+'''if __name__ == "__main__":
+    app.run(debug=True)'''

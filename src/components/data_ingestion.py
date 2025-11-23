@@ -73,5 +73,3 @@ if __name__ == "__main__":
 
 print(f"the best model is : {best_model_name}")
 print(f"the best model score is {best_model_score}")
-
-
