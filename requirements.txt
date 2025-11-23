@@ -8,6 +8,8 @@ XGBoost
 scikit-learn
 xgboost
 catboost
+flask
+
 
 
 
